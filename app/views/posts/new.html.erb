@@ -1,0 +1,22 @@
+<h1>新規投稿</h1>
+<%= form_with(model: @post, local: true) do |f| %>
+  <h3>title</h3>
+  <div>
+    <%= f.text_field :title, class: "form" %>
+  </div>
+  <h3>body</h3>
+  <div>
+    <%= f.text_area :body, class: "form" %>
+  </div>
+  <div>
+    <h3>genre</h3>
+    <!-- @genresには全てのgenreが格納されている -->
+    <!-- :name と :id が一対一対応している -->
+    <!-- params[:genre][:name] とすることで選択されたgenreが取得できる -->
+    <%= collection_select(:genre, :name, @genres, :id, :name) %>
+  </div>
+  <br>
+  <div>
+    <%= f.submit class: "btn" %>
+  </div>
+<% end %>
